@@ -1,0 +1,176 @@
+:root{
+  --cream:#fff9f2;
+  --rose:#f6d6dc;
+  --soft-gold:#d9b777;
+  --shadow:rgba(210,154,154,0.25);
+  --ink:#4a3a2a;
+  --ink-soft:#6a5542;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:"Lora",serif;
+  color:var(--ink);
+  background:radial-gradient(1200px 800px at 70% -10%, #ffd7e3 0%, #ffe5ee 40%, #fff5f8 100%) fixed;
+}
+
+.script{font-family:"Great Vibes", cursive; letter-spacing:.5px}
+
+.site-header{padding:24px 20px 0; text-align:center}
+.site-header h1{font-size:40px; color:var(--ink-soft); opacity:.9}
+
+.hero{display:grid; place-items:center; padding:24px}
+.hero-inner{max-width:960px; width:100%; text-align:center}
+.hero-title{font-size:56px; margin:16px 0 8px; color:#3e2f23}
+.subtitle{font-size:18px; color:var(--ink-soft); opacity:.9; margin:0 0 28px}
+
+.controls{margin:8px 0 28px}
+.btn-music{
+  appearance:none; border:none; cursor:pointer;
+  padding:10px 16px; border-radius:999px;
+  background:linear-gradient(180deg, #fff 0%, #fff6f6 100%);
+  color:#7a5a4a; box-shadow:0 6px 18px var(--shadow), inset 0 0 0 1px #f1e2dc;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.btn-music:hover{transform:translateY(-1px); box-shadow:0 10px 24px rgba(210,154,154,.35), inset 0 0 0 1px #ead7cf}
+.btn-music[aria-pressed="true"]{background:linear-gradient(180deg, #fff0f4 0%, #ffe7ef 100%);}
+
+.envelopes{display:flex; flex-wrap:wrap; gap:16px; padding:0 8px; justify-content:center}
+.envelope{
+  display:flex; align-items:center; gap:10px; justify-content:center;
+  text-decoration:none; color:#5a4537; font-weight:600;
+  background:linear-gradient(180deg, #ffffff 0%, #fff4f7 100%);
+  border-radius:18px; padding:16px 18px; position:relative;
+  box-shadow:0 12px 30px var(--shadow), inset 0 0 0 1px #efdcd4;
+  transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
+}
+.envelope{flex:1 1 320px; max-width:520px}
+.envelope .emoji{filter:drop-shadow(0 2px 2px rgba(0,0,0,.05));}
+.envelope::after{content:""; position:absolute; inset:0; border-radius:18px; pointer-events:none; box-shadow:0 0 0 0 rgba(217,183,119,0.7); transition:box-shadow .25s ease}
+.envelope:hover{transform:translateY(-2px); box-shadow:0 16px 36px rgba(210,154,154,.35), inset 0 0 0 1px #e8d4cb;}
+.envelope:hover::after{box-shadow:0 0 0 3px rgba(217,183,119,.35)}
+
+.vault-trigger{position:fixed; left:50%; bottom:14px; transform:translateX(-50%);
+  border:none; background:transparent; cursor:pointer; padding:0; outline:none;
+}
+.vault-heart{display:inline-grid; place-items:center; width:38px; height:38px; border-radius:999px;
+  font-size:18px; line-height:1; color:#e08aa2; background:linear-gradient(180deg,#fff,#fff3f7);
+  box-shadow:0 10px 24px rgba(210,154,154,.28), inset 0 0 0 1px #efdcd4;
+  opacity:.75; transition:opacity .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.vault-trigger:hover .vault-heart{opacity:1; transform:translateY(-2px); box-shadow:0 14px 30px rgba(210,154,154,.36), 0 0 0 3px rgba(217,183,119,.28) inset}
+.vault-trigger:focus .vault-heart{box-shadow:0 0 0 3px rgba(217,183,119,.45) inset}
+
+.site-footer{padding:36px 16px 24px; text-align:center}
+.quote{opacity:.9; color:#5c483a; font-style:italic}
+
+/* Petals / paper floating */
+#floating-petals{position:fixed; inset:0; pointer-events:none; z-index:0}
+.petal{position:absolute; width:14px; height:10px; background:radial-gradient(circle at 30% 30%, #ffdbe6, #ffedf3 60%, rgba(255,255,255,0) 61%); border-radius:10px 10px 10px 0; filter:blur(.2px) drop-shadow(0 4px 8px rgba(210,154,154,.2)); animation:floatDown linear forwards; opacity:.8}
+@keyframes floatDown{0%{transform:translateY(-10vh) rotate(0deg)} 100%{transform:translateY(110vh) rotate(360deg)}}
+
+/* Soft bokeh to fill background gaps */
+#bokeh{position:fixed; inset:0; pointer-events:none; z-index:-1}
+.bokeh{position:absolute; border-radius:50%; opacity:.35; filter:blur(0.5px); background:radial-gradient(circle, rgba(255,220,235,.9) 0%, rgba(255,220,235,.55) 35%, rgba(255,220,235,0) 70%); animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%{opacity:.2; transform:scale(1)} 50%{opacity:.45; transform:scale(1.08)} 100%{opacity:.2; transform:scale(1)}}
+
+/* Sparkles */
+#ambient-sparkles{position:fixed; inset:0; pointer-events:none; z-index:2}
+.sparkle{position:absolute; width:6px; height:6px; border-radius:50%; background:radial-gradient(circle, #fff 0%, #ffe9f1 45%, rgba(255,255,255,0) 70%); box-shadow:0 0 12px rgba(255, 214, 230, .9); animation:blink .9s ease-out forwards}
+@keyframes blink{0%{opacity:0; transform:scale(.6)} 35%{opacity:1; transform:scale(1)} 100%{opacity:0; transform:scale(0.2)}}
+
+/* Interactable hearts (click) */
+.tap-heart{position:absolute; width:18px; height:18px; pointer-events:none; z-index:2;
+  background:radial-gradient(circle at 30% 30%, #ffb6c8, #ff87a5 60%, #ff6f96 85%);
+  transform:rotate(45deg) scale(0.8);
+  animation:floatUp 1.8s ease-out forwards;
+}
+.tap-heart::before, .tap-heart::after{content:""; position:absolute; width:100%; height:100%; background:inherit; border-radius:50%}
+.tap-heart::before{left:-50%;}
+.tap-heart::after{top:-50%;}
+@keyframes floatUp{0%{opacity:.0; transform:translateY(6px) rotate(45deg) scale(0.6)} 15%{opacity:.9} 70%{opacity:.85} 100%{opacity:0; transform:translateY(-60px) rotate(45deg) scale(1.1)}}
+
+/* Cursor trail (very subtle) */
+.trail-spark{position:absolute; width:5px; height:5px; border-radius:50%; background:radial-gradient(circle, #fff 0%, #ffd9e8 45%, rgba(255,255,255,0) 70%); box-shadow:0 0 10px rgba(255, 210, 230, .9); animation:trailFade .7s ease-out forwards; pointer-events:none; z-index:2}
+@keyframes trailFade{0%{opacity:.7; transform:scale(.8)} 100%{opacity:0; transform:scale(.2)}}
+
+/* Ambient floating hearts */
+.ambient-heart{position:absolute; width:14px; height:14px; pointer-events:none; z-index:0;
+  background:radial-gradient(circle at 35% 35%, #ffc2d2, #ff9db7 60%, #ff86a7 85%);
+  transform:rotate(45deg);
+  opacity:.75; filter:drop-shadow(0 6px 12px rgba(255,150,180,.25));
+}
+.ambient-heart::before,.ambient-heart::after{content:""; position:absolute; width:100%; height:100%; background:inherit; border-radius:50%}
+.ambient-heart::before{left:-50%}
+.ambient-heart::after{top:-50%}
+
+/* Letter page */
+.letter-page{min-height:100vh; display:grid; place-items:center; padding:24px}
+.paper{
+  width:min(820px, 92vw); min-height:60vh; padding:32px 28px; border-radius:16px;
+  background:linear-gradient(180deg, #fff 0%, #fff7fb 100%);
+  box-shadow:0 18px 50px rgba(210,154,154,.25), inset 0 0 0 1px #f0e2df;
+  position:relative;
+}
+.paper::before{content:""; position:absolute; inset:-2px; border-radius:18px; pointer-events:none; background:conic-gradient(from 180deg, rgba(255,240,246,.6), rgba(255,255,255,0)); filter:blur(10px); opacity:.35}
+.paper h1{font-family:"Great Vibes", cursive; font-size:46px; margin:0 0 6px; color:#3b2d22}
+.paper .meta{margin:0 0 18px; color:#816a57; font-size:15px}
+.paper .message{font-size:19px; line-height:1.8; color:#4a3a2a; white-space:pre-wrap; min-height:200px}
+.paper .controls{display:flex; gap:10px; align-items:center; justify-content:center; margin:22px 0 0}
+.paper .toggle{appearance:none; border:none; padding:8px 14px; border-radius:999px; background:#fff3f6; color:#6b5242; box-shadow:0 8px 18px rgba(210,154,154,.25), inset 0 0 0 1px #edd8d1; cursor:pointer}
+.paper audio{width:100%; margin-top:12px}
+
+/* Vault gallery */
+.slider{position:relative; margin:8px 0 10px}
+.slides{position:relative; width:100%; height:min(62vh, 520px); border-radius:14px; overflow:hidden; background:linear-gradient(180deg,#fff,#fff5f7); box-shadow:0 18px 40px rgba(210,154,154,.25), inset 0 0 0 1px #f0e2df}
+.slides::before{content:""; position:absolute; inset:-1px; border-radius:16px; pointer-events:none; background:conic-gradient(from 180deg, rgba(255,215,230,.35), rgba(255,255,255,0) 35%, rgba(255,220,235,.35) 65%, rgba(255,255,255,0)); filter:blur(12px)}
+.slide{position:absolute; inset:0; display:grid; place-items:center; opacity:0; transform:translateX(40px) scale(.985); filter:blur(2px) saturate(.96); transition:opacity .6s ease, transform .6s ease, filter .6s ease}
+.slide.active{opacity:1; transform:translateX(0) scale(1); filter:blur(0) saturate(1.02)}
+.slide.enter-right{opacity:0; transform:translateX(40px) scale(.98)}
+.slide.enter-left{opacity:0; transform:translateX(-40px) scale(.98)}
+.slide.leave-left{transform:translateX(-40px) scale(.985); opacity:0}
+.slide.leave-right{transform:translateX(40px) scale(.985); opacity:0}
+.slide img{display:block; width:100%; height:100%; object-fit:cover; animation:kenburns 18s ease-in-out infinite alternate}
+.slide video{display:block; width:100%; height:100%; object-fit:cover; background:#000}
+@keyframes kenburns{0%{transform:scale(1)} 100%{transform:scale(1.06)}}
+.gallery-missing{display:grid; place-items:center; width:100%; height:100%; color:#8b6a6a; font-size:14px; letter-spacing:.2px; text-transform:lowercase; background:linear-gradient(180deg,#fff7fb,#fff);}
+.slider-btn{position:absolute; top:50%; transform:translateY(-50%); border:none; width:42px; height:42px; border-radius:999px; background:rgba(255,245,250,.8); color:#6b4d4d; box-shadow:0 8px 18px rgba(210,154,154,.3); cursor:pointer}
+.slider-btn.prev{left:10px}
+.slider-btn.next{right:10px}
+.dots{display:flex; gap:6px; justify-content:center; margin-top:10px}
+.dots button{width:8px; height:8px; border-radius:50%; border:none; background:#e9c9d2; cursor:pointer; transition:transform .25s ease, box-shadow .25s ease, background .25s ease}
+.dots button[aria-current="true"]{background:#d9a2b3; transform:scale(1.25); box-shadow:0 0 0 4px rgba(217,183,119,.25)}
+
+/* Lightbox */
+.lightbox{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(10,0,5,.4); backdrop-filter:blur(2px); z-index:3}
+.lightbox[aria-hidden="false"]{display:flex}
+.lightbox-img{max-width:90vw; max-height:82vh; border-radius:14px; box-shadow:0 20px 60px rgba(0,0,0,.35), 0 0 0 2px rgba(255,240,245,.5) inset}
+.lightbox-nav{position:fixed; inset:0; display:flex; align-items:center; justify-content:space-between; pointer-events:none}
+.lightbox-btn{pointer-events:auto; border:none; background:rgba(255,245,250,.7); color:#6b4d4d; border-radius:999px; width:40px; height:40px; margin:0 14px; cursor:pointer; box-shadow:0 8px 18px rgba(210,154,154,.3)}
+.lightbox-close{position:fixed; top:14px; right:14px; width:40px; height:40px; border:none; border-radius:999px; background:rgba(255,245,250,.8); cursor:pointer; box-shadow:0 8px 18px rgba(210,154,154,.3)}
+
+/* Feather / heart subtle motion */
+.float-soft{animation:floatSoft 6s ease-in-out infinite}
+@keyframes floatSoft{0%{transform:translateY(0)} 50%{transform:translateY(-6px)} 100%{transform:translateY(0)}}
+
+/* Small screens */
+@media (max-width:520px){
+  .hero-title{font-size:42px}
+  .paper h1{font-size:38px}
+}
+
+/* Mobile refinements */
+@media (max-width:420px){
+  .site-header h1{font-size:32px}
+  .hero-title{font-size:32px}
+  .subtitle{font-size:16px}
+  .btn-music{padding:12px 16px}
+  .envelope{flex:1 1 100%; padding:14px 16px}
+  .paper{padding:22px 18px}
+  .paper .message{font-size:18px; line-height:1.7}
+  .slider-btn{width:48px; height:48px}
+}
+
+

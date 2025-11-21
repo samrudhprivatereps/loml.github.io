@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Letters For My Love</title>
+    <meta name="description" content="Warm, handwritten love notes for every feeling." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="home">
+    <div id="bokeh" aria-hidden="true"></div>
+    <div id="floating-petals" aria-hidden="true"></div>
+    <div id="ambient-sparkles" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <h1 class="script">Letters For My Love</h1>
+    </header>
+
+    <main class="hero">
+      <div class="hero-inner">
+        <h2 class="script hero-title">To the one who holds my heart</h2>
+        <p class="subtitle">A note for every feeling, <br />so your heart never feels alone.</p>
+
+        <div class="controls">
+          <button class="btn-music" id="musicToggle" aria-pressed="false" title="Toggle soft background music">♪ music?</button>
+        </div>
+
+        <section class="envelopes" aria-label="Letters">
+          <a class="envelope" href="./letters/happy.html" data-sparkle>
+            <span class="emoji">💌</span>
+            <span>Letter for when you're happy</span>
+          </a>
+          <a class="envelope" href="./letters/stressed.html" data-sparkle>
+            <span class="emoji">💌</span>
+            <span>Letter for when you're stressed</span>
+          </a>
+          <a class="envelope" href="./letters/unloved.html" data-sparkle>
+            <span class="emoji">💌</span>
+            <span>Letter for when you feel unloved</span>
+          </a>
+          <a class="envelope" href="./letters/miss.html" data-sparkle>
+            <span class="emoji">💌</span>
+            <span>Letter for when you miss me</span>
+          </a>
+          <a class="envelope" href="./letters/tired.html" data-sparkle>
+            <span class="emoji">💌</span>
+            <span>Letter for when you're tired</span>
+          </a>
+          <a class="envelope" href="./letters/smile.html" data-sparkle>
+            <span class="emoji">💌</span>
+            <span>Letter just to make you smile</span>
+          </a>
+          <a class="envelope" href="./letters/sad.html" data-sparkle>
+            <span class="emoji">💌</span>
+            <span>Letter for when I make you sad</span>
+          </a>
+        </section>
+
+        <button id="vaultTrigger" class="vault-trigger" title="For when you need extra love" aria-label="Secret love vault">
+          <span class="vault-heart" aria-hidden="true">❤</span>
+        </button>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p class="quote">Wherever you are, my love reaches you.</p>
+    </footer>
+
+    <!-- Background music (loaded only on click) -->
+    <audio id="bgMusic" loop preload="none" data-src="./assets/audio/lofi.mp3"></audio>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+
+
